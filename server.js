@@ -15,11 +15,12 @@ const serverConfig = {
 
 const HTTPS_PORT = 443;
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 26950;
 
 //initialize a http server
 const server = http.createServer(app);
 
+/*
 capp.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
@@ -28,6 +29,7 @@ capp.use(express.static('dist'))
 
 const httpsServer = https.createServer(serverConfig, capp);
 httpsServer.listen(HTTPS_PORT, '0.0.0.0');
+*/
 
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
@@ -154,6 +156,7 @@ wss.on("connection", ws => {
     })
   );
 });
+
 //start our server
 server.listen(port, () => {
   console.log(`Signalling Server running on port: ${port}`);

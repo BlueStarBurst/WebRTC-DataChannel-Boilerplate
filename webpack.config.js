@@ -73,6 +73,22 @@ mainConfig.plugins = [
   }),
 ];
 
+
+const preloadConfig = {
+  entry: './client/preload.js',
+  target: 'electron-preload',
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'preload.js'
+  }
+};
+/*
+preloadConfig.entry = './client/preload.js';
+preloadConfig.target = 'electron-preload';
+preloadConfig.output.filename = 'preload.js';
+*/
+
+
 const rendererConfig = lodash.cloneDeep(commonConfig);
 rendererConfig.entry = './client/app.js';
 rendererConfig.target = 'electron-renderer';
@@ -83,4 +99,5 @@ rendererConfig.plugins = [
   }),
 ];
 
-module.exports = [mainConfig, rendererConfig];
+//module.exports = [mainConfig, rendererConfig];
+module.exports = [mainConfig, rendererConfig, preloadConfig];
